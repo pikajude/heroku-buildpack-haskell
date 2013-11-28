@@ -5,8 +5,8 @@ mkdir -p $HOME/usr/lib
 ln -s /usr/lib/libgmp.so.3 $HOME/usr/lib/libgmp.so
 
 # ghc
-curl --silent http://www.haskell.org/ghc/dist/7.4.1/ghc-7.4.1-x86_64-unknown-linux.tar.bz2|tar xj
-cd ghc-7.4.1/
+curl --silent http://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-x86_64-unknown-linux.tar.bz2|tar xj
+cd ghc-7.6.3/
 ./configure --prefix=$HOME/ghc --with-gmp-libraries=$HOME/usr/lib
 make install
 cd ..
@@ -15,17 +15,17 @@ cd ..
 
 # Remove haddock and hpc - no docs or coverage
 rm $HOME/ghc/bin/haddock*
-rm $HOME/ghc/lib/ghc-7.4.1/haddock
-rm -r $HOME/ghc/lib/ghc-7.4.1/html
-rm -r $HOME/ghc/lib/ghc-7.4.1/latex
+rm $HOME/ghc/lib/ghc-7.6.3/haddock
+rm -r $HOME/ghc/lib/ghc-7.6.3/html
+rm -r $HOME/ghc/lib/ghc-7.6.3/latex
 # rm $HOME/ghc/bin/hp*
 # rm -r $HOME/ghc/lib/ghc-7.4.1/hp*
 # rm -r $HOME/ghc/lib/ghc-7.4.1/package.conf.d/hpc-0.5.1.1-*
 # rm -r $HOME/ghc/lib/ghc-7.4.1/ghc-7.4.1
 # rm -r $HOME/ghc/lib/ghc-7.4.1/package.conf.d/ghc-7.4.1-*
 # rm -r $HOME/ghc/lib/ghc-7.4.1/package.conf.d/package.cache
-echo "" > $HOME/ghc/lib/ghc-7.4.1/ghc-usage.txt
-echo "" > $HOME/ghc/lib/ghc-7.4.1/ghci-usage.txt
+echo "" > $HOME/ghc/lib/ghc-7.6.3/ghc-usage.txt
+echo "" > $HOME/ghc/lib/ghc-7.6.3/ghci-usage.txt
 
 # Remove duplicate libs
 find $HOME/ghc/lib -name "*_p.a" -delete
