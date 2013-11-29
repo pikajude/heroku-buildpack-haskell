@@ -14,9 +14,8 @@ mkdir -p $CACHE_DIR
 if [ ! -e $CACHE_DIR/ghc ]; then
   GHC_URL="http://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-x86_64-unknown-linux.tar.bz2"
   echo "-----> Downloading GHC"
-  curl -# --max-time 120 -L "$GHC_URL" | tar xz -C $CACHE_DIR
+  curl -# --max-time 120 -L "$GHC_URL" | tar xj -C $CACHE_DIR
   cd $CACHE_DIR
-  tar xjf ghc-7.6.3-x86_64-unknown-linux.tar.bz
   mkdir ghc
   ./configure --prefix $CACHE_DIR/ghc
   make install
