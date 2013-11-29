@@ -17,6 +17,7 @@ if [ ! -e $CACHE_DIR/ghc ]; then
   curl -# --max-time 120 -L "$GHC_URL" | tar xj -C $CACHE_DIR
   cd $CACHE_DIR
   mkdir ghc
+  cd ghc-7.6.3
   ./configure --prefix $CACHE_DIR/ghc
   make install
 fi
