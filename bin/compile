@@ -31,6 +31,10 @@ fi
 
 # Fix directory
 
+mkdir -p $FIXED_HOME/usr/lib
+ln -s /usr/lib/libgmp.so.3.5.2 $FIXED_HOME/usr/lib/libgmp.so
+export LD_LIBRARY_PATH=$FIXED_HOME/usr/lib
+
 # Restore Cabal cache or download an empty environemt
 if [ -e $CACHE_DIR/cabal ]; then
   rm -rf $FIXED_HOME/.cabal
@@ -46,9 +50,7 @@ elif [ ! -e $FIXED_HOME/.cabal ]; then
 fi
 
 # Set LD_LIBRARAY_PATH and link essential libraries
-mkdir -p $FIXED_HOME/usr/lib
-ln -s /usr/lib/libgmp.so.3.5.2 $FIXED_HOME/usr/lib/libgmp.so
-export LD_LIBRARY_PATH=$FIXED_HOME/usr/lib
+
 
 # Set PATH
 export PATH=$FIXED_HOME/ghc/bin:$FIXED_HOME/.cabal/bin:$PATH
