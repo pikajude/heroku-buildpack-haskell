@@ -41,7 +41,7 @@ elif [ ! -e $FIXED_HOME/.cabal ]; then
   echo "-----> Downloading Cabal"
   curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $CACHE_DIR
   cd cabal-install-1.18.0.2/
-  PATH=$CACHE_DIR/ghc/bin:$PATH
+  export PATH=$CACHE_DIR/ghc/bin:$PATH
   ./bootstrap.sh
   cd $CACHE_DIR
 fi
