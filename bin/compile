@@ -20,6 +20,7 @@ if [ ! -e $CACHE_DIR/ghc ]; then
   cd ghc-7.6.3
   ./configure --prefix $CACHE_DIR/ghc
   make install -j
+  cd $CACHE_DIR
 fi
 
 # Restore GHC registry if available
@@ -36,9 +37,12 @@ if [ -e $CACHE_DIR/cabal ]; then
   rm -rf $FIXED_HOME/.cabal
   mv $CACHE_DIR/cabal $FIXED_HOME/.cabal
 elif [ ! -e $FIXED_HOME/.cabal ]; then
-  CABAL_URL="http://informatik.uni-kiel.de/~sad/cabal.tar.gz"
+  CABAL_URL="http://www.haskell.org/cabal/release/cabal-install-1.18.0.2/cabal-install-1.18.0.2.tar.gz"
   echo "-----> Downloading Cabal"
-  curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $FIXED_HOME
+  curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $CACHE_DIR
+  cd cabal-install-1.18.0.2/
+  ./bootstrap.sh
+  cd $CACHE_DIR
 fi
 
 # Set LD_LIBRARAY_PATH and link essential libraries
