@@ -5,7 +5,7 @@ mkdir -p $HOME/usr/lib
 ln -s /usr/lib/libgmp.so.3 $HOME/usr/lib/libgmp.so
 
 # ghc
-curl --connect-timeout 240 --silent http://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-x86_64-unknown-linux.tar.bz2|tar xj
+curl --max-time 240 --silent http://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-x86_64-unknown-linux.tar.bz2|tar xj
 cd ghc-7.6.3/
 ./configure --prefix=$HOME/ghc --with-gmp-libraries=$HOME/usr/lib
 make install
