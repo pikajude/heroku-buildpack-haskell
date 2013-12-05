@@ -35,7 +35,7 @@ mkdir -p $FIXED_HOME/usr/lib
 mkdir -p $CACHE_DIR/usr/lib
 ln -s /usr/lib/libgmp.so.3.5.2 $FIXED_HOME/usr/lib/libgmp.so
 ln -s /usr/lib/libgmp.so.3.5.2 $CACHE_DIR/usr/lib/libgmp.so
-export LD_LIBRARY_PATH=$CACHE_DIR/usr/lib
+export LD_LIBRARY_PATH=$FIXED_HOME/usr/lib
 ldconfig -v || true
 
 # Restore Cabal cache or download an empty environemt
